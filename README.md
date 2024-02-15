@@ -2,7 +2,42 @@
 
 Simple spellcheck package in go
 
-## words.txt longest word
+```shell
+git clone https://github.com/foglar/spell_check.git
+```
+
+## Example usage
+
+There are already bundled some wordlist, `words.txt` **(EN dictionary)**, `words_alpha.txt` **(EN dictinary alphabet)** and `czech.txt` **(CZ dictionary)**.
+
+```go
+package main
+
+import (
+ "fmt"
+ "github.com/foglar/spell_check/spell"
+ "log"
+)
+
+func main() {
+ sc, err := spellchecker.NewSpellChecker("./words.txt")
+ if err != nil {
+  log.Fatalf("Error creating SpellChecker: %v", err)
+ }
+
+ word := "exprezzion"
+ closestWords := sc.Check(word, 10)
+
+ fmt.Printf("Closest words to '%s': %v\n", word, closestWords)
+}
+```
+
+## Performace
+
+- wordlists are ordered alphabeticly
+- CPU: AMD Ryzen 7 5825U with Radeon Graphics (16) @ 4.546GHz
+
+### words.txt *pneumonoultramicroscopicsilicovolcanoconiosis*
 
 | Test Case       | Real Time | User Time | Sys Time |
 | --------------- | --------- | --------- | -------- |
@@ -10,7 +45,7 @@ Simple spellcheck package in go
 | power saver     | *3,823s*  | 4,739s    | 0,533s   |
 | balanced        | *1,942s*  | 2,485s    | 0,282s   |
 
-## words_alpha.txt longest word
+### words_alpha.txt *pneumonoultramicroscopicsilicovolcanoconiosis*
 
 | Test Case       | Real Time | User Time | Sys Time |
 | --------------- | --------- | --------- | -------- |
@@ -18,7 +53,7 @@ Simple spellcheck package in go
 | balanced        | *1,554s*  | 1,955s    | 0,272s   |
 | power saver     | *3,085s*  | 3,863s    | 0,443s   |
 
-## words.txt shortest word
+### words.txt *ad*
 
 | Test Case       | Real Time | User Time | Sys Time |
 | --------------- | --------- | --------- | -------- |
@@ -26,7 +61,7 @@ Simple spellcheck package in go
 | power saver     | *0,322s*  | 0,368s    | 0,178s   |
 | balanced        | *0,318s*  | 0,384s    | 0,145s   |
 
-## words_alpha.txt shortest word
+### words_alpha.txt *ad*
 
 | Test Case       | Real Time | User Time | Sys Time |
 | --------------- | --------- | --------- | -------- |
@@ -34,4 +69,6 @@ Simple spellcheck package in go
 | balanced        | *0,422s*  | 0,508s    | 0,258s   |
 | power saver     | *0,779s*  | 0,922s    | 0,342s   |
 
-* [WagnerFisher algoritm explanation video](https://www.youtube.com/watch?v=d-Eq6x1yssU)
+## Reference
+
+- [WagnerFisher algoritm explanation video](https://www.youtube.com/watch?v=d-Eq6x1yssU)
