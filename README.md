@@ -15,7 +15,7 @@ package main
 
 import (
  "fmt"
- "github.com/foglar/spell_check/spell"
+ "github.com/foglar/spell_check/"
  "log"
 )
 
