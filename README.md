@@ -72,3 +72,4 @@ func main() {
 ## Reference
 
 - [WagnerFisher algoritm explanation video](https://www.youtube.com/watch?v=d-Eq6x1yssU)
+- [WagnerFIsher Python](https://github.com/b001io/wagner-fischer/tree/main)

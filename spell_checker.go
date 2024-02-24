@@ -11,8 +11,8 @@ type SpellChecker struct {
 	words []string
 }
 
-// NewSpellChecker creates a new SpellChecker instance.
-func NewSpellChecker(dictionaryPath string) (*SpellChecker, error) {
+// Init() creates a new SpellChecker instance.
+func Init(dictionaryPath string) (*SpellChecker, error) {
 	words, err := loadDictionary(dictionaryPath)
 	if err != nil {
 		return nil, err
